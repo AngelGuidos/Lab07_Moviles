@@ -1,0 +1,18 @@
+1. ¿Qué ventajas tiene el utilizar LiveData?
+Los datos estan siempre actualizados, la UI coincide con el estado de los datos, no hay fugas de memoria, el ciclo de vida ya no se controla de forma manual.
+
+2. ¿Qué patrón de diseño utiliza LiveData?
+Patron de diseño observador
+
+3. Menciona que se debe agregar al Gradle para poder implementar DataBinding
+dataBinding {
+enabled true
+}
+
+4. ¿Qué es DataBinding? Menciona sus ventajas frente a findViewById
+funcion que permite vincular elementos de la UI directamente con los datos de la aplicacion.
+No es necesario realizar actualizaciones manuales, mayor eficiencia y rendimiento 
+
+
+
+

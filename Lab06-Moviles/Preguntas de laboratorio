@@ -1,0 +1,7 @@
+Preguntas:
+
+¿En qué consiste el patrón de diseño Repository?
+Aisla la parte de los datos del resto de la app, esta es la parte que controla los datos y la logica.
+
+¿Qué es el ViewModel?
+Es una logica emprsarial, contenedor que expone la ui.

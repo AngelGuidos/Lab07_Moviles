@@ -5,6 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.movie.MovieFragment">
 
+    <data>
+        <variable
+            name="aux"
+            type="com.example.laboratorio05.ui.movie.viewModel.MovieViewModel" />
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,22 +22,23 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="@dimen/extraLargeGap"
-                android:layout_height="@dimen/extraLargeGap"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
                 android:layout_marginTop="@dimen/mediumGap"
-                android:src="@drawable/starawars"
+                android:src="@drawable/no_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="TODO" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/single_tittle_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/smallGap"
                 android:layout_marginTop="@dimen/smallGap"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/starWarsText"
+                android:text="@{aux.name}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/mediumTextGap"
                 android:textStyle="bold"
@@ -40,41 +47,42 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/single_genre_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/mediumGap"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/category"
+                android:text="@{aux.category}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/mediumTextGap"
-                app:layout_constraintEnd_toStartOf="@+id/textView5"
+                app:layout_constraintEnd_toStartOf="@+id/single_quali_tv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintTop_toBottomOf="@+id/single_tittle_tv" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/single_quali_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/starWarsCalification"
+                android:text="@{aux.qualification}"
                 android:textColor="@color/calification"
                 android:textSize="@dimen/largeTextGap"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView6"
-                app:layout_constraintTop_toTopOf="@+id/textView6" />
+                app:layout_constraintStart_toEndOf="@+id/single_genre_tv"
+                app:layout_constraintTop_toTopOf="@+id/single_genre_tv" />
 
             <TextView
+                android:id="@+id/single_des_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/mediumGap"
                 android:layout_marginTop="@dimen/mediumGap"
                 android:layout_marginEnd="@dimen/mediumGap"
                 android:padding="@dimen/smallGap"
-                android:text="@string/descriptionStarWars"
+                android:text="@{aux.description}"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/textView7"
-                app:layout_constraintStart_toStartOf="@+id/textView7"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintEnd_toEndOf="@+id/single_tittle_tv"
+                app:layout_constraintStart_toStartOf="@+id/single_tittle_tv"
+                app:layout_constraintTop_toBottomOf="@+id/single_quali_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

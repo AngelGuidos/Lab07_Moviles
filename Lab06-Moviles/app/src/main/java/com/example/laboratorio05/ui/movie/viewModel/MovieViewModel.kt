@@ -1,12 +1,10 @@
-package com.example.laboratorio05.ui.movie
+package com.example.laboratorio05.ui.movie.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import androidx.navigation.fragment.findNavController
 import com.example.laboratorio05.MovieReviewerApplication
 import com.example.laboratorio05.data.models.MovieModel
 import com.example.laboratorio05.repository.MovieRepository
@@ -21,7 +19,7 @@ class MovieViewModel(private val repository: MovieRepository): ViewModel() {
 
     fun getMovies() = repository.getMovies()
 
-    fun addMovie(movie: MovieModel) = repository.addMovie((movie))
+    private fun addMovie(movie: MovieModel) = repository.addMovie(movie)
 
     private fun validateData(): Boolean {
         when{
@@ -38,15 +36,18 @@ class MovieViewModel(private val repository: MovieRepository): ViewModel() {
             status.value = WRONG_DATA
             return
         }
-        val newMovie = MovieModel(
-            name.value.toString(),
-            category.value.toString(),
-            description.value.toString(),
-            qualification.value.toString()
+        val movie = MovieModel(
+            name.value!!,
+            category.value!!,
+            description.value!!,
+            qualification.value!!
         )
-        addMovie(newMovie)
+        addMovie(movie)
+        clearData()
+
         status.value = MOVIE_CREATED
     }
+
 
     fun clearStatus (){
         status.value = INACTIVE
@@ -57,6 +58,14 @@ class MovieViewModel(private val repository: MovieRepository): ViewModel() {
         category.value = ""
         description.value = ""
         qualification.value = ""
+    }
+
+    fun setSelected(movie: MovieModel){
+        clearData()
+        name.value = movie.name
+        category.value = movie.category
+        description.value = movie.description
+        qualification.value = movie.qualification
     }
 
     companion object{
